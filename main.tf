@@ -16,7 +16,7 @@ provider "aws" {
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "${owner}-vpc"
+  name = "${var.owner}-vpc"
   cidr = "10.0.0.0/16"
 
   azs                = ["${var.region}a", "${var.region}b", "${var.region}c"]
