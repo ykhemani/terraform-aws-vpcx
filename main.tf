@@ -1,24 +1,9 @@
-variable "region" {
-  type        = string
-  description = "AWS Region in which to provision this VPC."
-  default = "us-west-2"
-}
-
-variable "arn_of_role_to_assume" {
-  type        = string
-  description = "ARN of role that Terraform will assume in order to use th AWS provider to run this Terraform code."
-}
-
-variable "owner" {
-  type        = string
-  description = "Label to identify owner, will be used for tagging resources that are provisioned."
+terraform {
+  required_version  = ">= 0.12.23"
 }
 
 provider "aws" {
   region = var.region
-  assume_role {
-    role_arn = var.arn_of_role_to_assume
-  }
 }
 
 module "vpc" {
