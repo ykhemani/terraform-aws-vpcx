@@ -11,7 +11,7 @@ variable tag_owner {
 
 variable tag_ttl {
   type        = string
-  description = "TTL for resources created with this Terraform configuration"
+  description = "TTL (in hours) for resources created with this Terraform configuration"
   default     = "24"
 }
 
