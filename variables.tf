@@ -4,11 +4,22 @@ variable region {
   default     = "us-west-2"
 }
 
-variable owner {
+variable tag_owner {
   type        = string
   description = "Label to identify owner, will be used for tagging resources that are provisioned."
 }
 
+variable tag_ttl {
+  type        = string
+  description = "TTL for resources created with this Terraform configuration"
+  default     = "24"
+}
+
+variable vpc_subnet {
+  type        = string
+  description = "VPC Subnet CIDR"
+  default     = "10.0.0.0/8"
+}
 variable private_subnets {
   type        = list(string)
   description = "List of private subnets for this VPC."

@@ -1,5 +1,10 @@
 terraform {
-  required_version  = ">= 0.12.23"
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
+  required_version = ">= 0.13"
 }
 
 provider "aws" {
@@ -9,14 +14,15 @@ provider "aws" {
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "${var.owner}-vpc"
-  cidr = "10.0.0.0/16"
+  name = "${var.tag_owner}-vpc"
+  cidr = var.vpc_subnet
 
   azs                = ["${var.region}a", "${var.region}b", "${var.region}c"]
-  private_subnets    = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  private_subnets    = var.private_subnets
+  public_subnets     = var.public_subnets
 
   tags = {
-    Owner            = var.owner
+    Owner            = var.tag_owner
+    TTL              = var.tag_ttl
   }
 }
