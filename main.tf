@@ -13,6 +13,7 @@ provider "aws" {
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "2.66.0"
 
   name = "${var.tag_owner}-vpc"
   cidr = var.vpc_subnet
