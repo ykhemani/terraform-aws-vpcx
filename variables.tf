@@ -18,7 +18,7 @@ variable tag_ttl {
 variable vpc_subnet {
   type        = string
   description = "VPC Subnet CIDR"
-  default     = "10.0.0.0/8"
+  default     = "10.0.0.0/16"
 }
 variable private_subnets {
   type        = list(string)
