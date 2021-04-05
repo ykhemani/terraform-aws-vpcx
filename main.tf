@@ -12,15 +12,18 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
-  version = "2.66.0"
+  source               = "terraform-aws-modules/vpc/aws"
+  version              = "2.66.0"
 
-  name = "${var.owner}-vpc"
-  cidr = var.vpc_subnet
+  name                 = "${var.owner}-vpc"
+  cidr                 = var.vpc_subnet
 
-  azs                = ["${var.region}a", "${var.region}b", "${var.region}c"]
-  private_subnets    = var.private_subnets
-  public_subnets     = var.public_subnets
+  azs                  = ["${var.region}a", "${var.region}b", "${var.region}c"]
+  private_subnets      = var.private_subnets
+  public_subnets       = var.public_subnets
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
+  enable_dns_hostnames = true
 
   tags = {
     owner              = var.owner
